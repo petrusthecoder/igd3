@@ -1,6 +1,16 @@
 # IGD3
 An open-source python based software that automates the boring development process
 
+## Requisitos Mínimos de Software
+- Python 3
+- Git 2.18
+- Node.js 10.12
+
+## Instruções
+
+Para ter acesso a todo o poder de IGD3 em seus projetos, clone o repositório em seu computador,
+e estraia o arquivo igd3.py a raiz do seu projeto, e digitar o comando "py igd3.py" no terminal.
+
 ##### Developed by Petrus Rennan (petrusthecoder)
 
 ## Principais Comandos
