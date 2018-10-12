@@ -1,6 +1,7 @@
 from callback import *
 import os
 def ask_bin_treat(ask, case_yes, case_no):
+	print(ask)
 	if (ask == "s"):
 		case_yes
 	elif (ask == "n"):
