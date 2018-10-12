@@ -1,6 +1,44 @@
 import os
 
 # FUNÇÕES GLOBAIS
+def status():
+	print("Status:")
+	os.system("git status")
+	
+def stage():
+	status()
+	print("")
+	print("Stageando alterações...")
+	os.system("git add .")
+	print("")
+	print("Status:")
+	os.system("git status")
+	print("")
+
+def commit():
+	msg = input("o que foi alterado nessa versão? -> ")
+	os.system('git commit -m "'+ msg +' (IGD3 Bot Commit)"')
+	print("")
+	print("Efetuando commit local...")		
+	print("")
+	print("Commitado!")
+	print("")
+
+def fast_commit():
+	print("Efetuando commit local rápido...")
+	os.system('git commit -m "Committed With IGD3 <3"')
+	print("")
+
+def push():
+	remote = input("remote-> ")
+	branch = input("branch-> ")
+	print("Fazendo upload para repositório remoto...")
+	os.system("git push " + remote + " " + branch)
+	print("")
+
+def fast_push():
+	print("Fazendo upload para repositório remoto...")
+	os.system('git push origin master')
 
 def linux_or_win():
 	quest = input("Está rodando esse software em um terminal Linux?")
@@ -41,9 +79,10 @@ def linux_or_win():
 		print("Responda apenas 's' ou 'n'!")
 
 def session_start():
+	# CALLBACK FUNCTIONS
 	def run_branch():
 		branch_name = input("Nome da branch ->")
-		os.system("git branch " + branch_name )
+		os.system("git checkout -b " + branch_name )
 	def run_igd():
 		console = ["npm init -y",
 		"npm install --save-dev gulp",
@@ -72,14 +111,9 @@ def session_start():
 		
 		ask = input("Deseja subir a versão para o repositório remoto agora? ->")
 		if (ask == "s"):
-			print("Stageando alterações...")
-			os.system("git add .")
-			print("")
-			print("Efetuando commit local...")
-			os.system('git commit -m "Initial Commit With IGD3 <3"')
-			print("")
-			print("Fazendo upload para repositório remoto...")
-			os.system('git push origin master')
+			stage()
+			fast_commmit()
+			fast_push()
 			print("")
 		elif (ask == "n"):
 			print("Repositório remoto não atualizado!")
@@ -88,30 +122,28 @@ def session_start():
 			print("Responda apenas 's' ou 'n'!")
 			print("")
 	def git_commit():
-		msg = input("o que foi alterado nessa versão? -> ")
-		print("")
-		os.system("git add .")
-		print("")
-		print("Efetuando commit local...")
-		os.system('git commit -m "'+ msg +' (IGD3 Bot Commit)"')
-		print("")
-		print("Commitado!")
-		print("")
+		stage()
+		commit()
+
 	# Listeners Tree
 	while (True):
-		git_c = input(user + "-> ")
-		if (git_c == "branch"):
+		shell = input(user + "-> ")
+		if (shell == "branch"):
 			run_branch()
-		if (git_c == "igd"):
+		if (shell == "igd"):
 			run_igd()
-		if (git_c == "hello git"):
+		if (shell == "hello git"):
 			hello_git()
-		if (git_c == "commit"):
+		if (shell == "commit"):
 			git_commit()
-		if (git_c == "log"):
+		if (shell == "log"):
 			os.system("git log")
-		if (git_c == "cls"):
+		if (shell == "cls"):
 			os.system("cls")
+		if (shell == "push"):
+			push()
+		if (shell == "status"):
+			status()
 
 print("---------IGD3 v.1.0.0----------")
 print("Automatize Já!")
