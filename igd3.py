@@ -4,7 +4,7 @@ import os
 def status():
 	print("Status:")
 	os.system("git status")
-	
+
 def stage():
 	status()
 	print("")
@@ -130,7 +130,7 @@ def session_start():
 		shell = input(user + "-> ")
 		if (shell == "branch"):
 			run_branch()
-		if (shell == "igd"):
+		if (shell == "hello node"):
 			run_igd()
 		if (shell == "hello git"):
 			hello_git()
