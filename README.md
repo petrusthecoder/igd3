@@ -1,6 +1,7 @@
 # IGD3
 An open-source python based software that automates the boring development process
-Developed by Petrus Rennan (petrusthecoder)
+
+##### Developed by Petrus Rennan (petrusthecoder)
 
 ## Principais Comandos
 
