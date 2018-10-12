@@ -1,13 +1,5 @@
 from callback import *
 import os
-def ask_bin_treat(ask, case_yes, case_no):
-	print(ask)
-	if (ask == "s"):
-		case_yes
-	elif (ask == "n"):
-		case_no
-	else:
-		print("Responda apenas 's' ou 'n'!")
 
 def linux_or_win():
 	quest = input("Está rodando esse software em um terminal Linux?")
@@ -16,11 +8,20 @@ def linux_or_win():
 		pacotes_size=len(pacotes)
 		loop = 0
 		while (loop < pacotes_size):
-			print("Essa aplicação depende do pacote "+ pacotes[loop] +" para funcionar corretamente.")
-			you_have=input("Deseja instalá-lo agora?->")
-			case_yes = os.system("apt-get install "+ pacotes[loop])
-			case_no = print(pacotes[loop] + " não será instalado.")
-			ask_bin_treat(you_have, case_yes, case_no)
+			key = False
+			while (key == False):
+				print("Essa aplicação depende do pacote "+ pacotes[loop] +" para funcionar corretamente.")
+				ask = input("Deseja instalá-lo agora?->")	
+				if (ask == "s"):
+					os.system("apt-get install "+ pacotes[loop])
+					key = True
+					loop += 1
+				elif (ask == "n"):
+					print(pacotes[loop] + " não será instalado.")
+					key = True
+					loop += 1
+				else:
+					print("Responda apenas 's' ou 'n'!")
 
 def session_start():
 	def run_branch():
@@ -52,15 +53,14 @@ def session_start():
 		clone = input("Digite o link do git clone->")
 		os.system("git remote add origin "+ clone)
 		
-		ask = input("Deseja stagear? ->")
-		case_yes = os.system("git add .")
-		case_no = print("Repositório não será commitado!")
-		ask_bin_treat(ask, case_yes, case_no)
-
 		ask = input("Deseja commitar? ->")
-		case_yes = os.system('git commit -m "Bot Commit IGD3 <3"')
-		case_no = print("Repositório não será commitado!")
-		ask_bin_treat(ask, case_yes, case_no)
+		if (ask == "s"):
+			os.system("git add .")
+			os.system('git commit -m "Bot Commit IGD3 <3"')
+		elif (ask == "n"):
+			print("Repositório não será commitado!")
+		else:
+			print("Responda apenas 's' ou 'n'!")
 
 
 	# Listeners Tree
