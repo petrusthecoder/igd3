@@ -1,10 +1,11 @@
-from callback import *
 import os
+
+# FUNÇÕES GLOBAIS
 
 def linux_or_win():
 	quest = input("Está rodando esse software em um terminal Linux?")
 	if (quest == "s"):
-		pacotes = ["git", "npm"]
+		pacotes = ["git", "nodejs"]
 		pacotes_size=len(pacotes)
 		loop = 0
 		while (loop < pacotes_size):
@@ -13,7 +14,7 @@ def linux_or_win():
 				print("Essa aplicação depende do pacote "+ pacotes[loop] +" para funcionar corretamente.")
 				ask = input("Deseja instalá-lo agora?->")	
 				if (ask == "s"):
-					os.system("apt-get install "+ pacotes[loop])
+					os.system("sudo apt-get install "+ pacotes[loop])
 					key = True
 					loop += 1
 				elif (ask == "n"):
@@ -22,6 +23,22 @@ def linux_or_win():
 					loop += 1
 				else:
 					print("Responda apenas 's' ou 'n'!")
+	elif (quest == "n"):
+		minimal = """
+----------------IGD3 FOR WINDOWS-------------------------
+
+	Requisitos Mínimos
+	Copie e Cole os seguintes links em seu browser
+		para instalar os pacotes necessários!
+
+	(*) Git: (  https://git-scm.com/download/win  )
+	(*) Node.js: (  https://nodejs.org/en/  )
+
+---------------------------------------------------------
+		"""
+		print(minimal)
+	else:
+		print("Responda apenas 's' ou 'n'!")
 
 def session_start():
 	def run_branch():
@@ -62,7 +79,18 @@ def session_start():
 			print("Repositório remoto não atualizado!")
 		else:
 			print("Responda apenas 's' ou 'n'!")
-
+	def git_commit():
+		msg = input("o que foi alterado nessa versão? -> ")
+		key = False
+		while(key == False):
+			if (msg == ""):
+				sure = input("subir sem comentários? ->")
+				if (sure == "n"):
+					key = False
+				key = True
+		os.system("git add .")
+		os.system('git commit -m "'+ msg +' (IGD3 Bot Commit)"')
+		print("Commitado!")
 
 	# Listeners Tree
 	while (True):
@@ -73,30 +101,22 @@ def session_start():
 			run_igd()
 		if (git_c == "hello git"):
 			hello_git()
+		if (git_c == "commit"):
+			git_commit()
 
 
 print("---------IGD3 v.1.0.0----------")
 print("Automatize Já!")
 print("Desenvolvido por Petrus Rennan")
 print("-------------------------------")
-linux_or_win()
 while (True):
 	ask = input("Já possui conta?")
 	if (ask == "s"):
-		while (user != "Petrus"):
-			user = input("Login: ")
-			if (user == "Petrus"):
-				while(passw != "qweasd"):
-					passw = input("Password: ")
-					if (passw =="qweasd"):
-						print("Bem vindo, " + user + "!")
-						session_start()
-					else:
-						print("A senha está incorreta")
-			else:
-				print("O usuário não existe.")
-		
-	elif (ask== "n"):
+		user = "Visitante"
+		mail = "email@padrao.com.br"
+		passw = "root"
+		session_start()
+	elif (ask == "n"):
 		warning = """
 
 ----CADASTRO----------------------------------------------------------
@@ -109,14 +129,21 @@ de configs locais no git, ou registro de informações autorais em .json.
 
 
 		"""
+		linux_or_win()
 		print(warning)
 		user = input("Digite seu nome: ")
 		mail = input("Digite seu e-mail: ")
-		passw = input("Digite uma senha bem forte: ")
-		confirm_p = input("Confirme sua senha: ")
-		if(passw == confirm_p):
-			print("Usuário cadastrado no banco de dados!")
-			session_start()
-
+		key = False
+		while (key == False):
+			passw = input("Digite uma senha bem forte: ")
+			confirm_p = input("Confirme sua senha: ")
+			if(passw == confirm_p):
+				print("Usuário cadastrado no banco de dados!")
+				session_start()
+			else:
+				print("As senhas não conferem!")
+				key = False
+		
+	
 	else:
 		print("Responda apenas 's' ou 'n'!")
