@@ -144,6 +144,10 @@ def session_start():
 			push()
 		if (shell == "status"):
 			status()
+		if (shell == "checkout"):
+			branch = input("branch->")
+			os.system("git checkout "+ branch)
+
 
 print("---------IGD3 v.1.0.0----------")
 print("Automatize Já!")
