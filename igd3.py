@@ -67,31 +67,36 @@ def session_start():
 		print("Configurando as informações do autor...")
 		os.system('git config user.name "'+ user +'"')
 		os.system('git config user.email "'+ mail +'"')
-		clone = input("Digite o link do git clone->")
+		clone = input("Link do repositório remoto (origin)->")
 		os.system("git remote add origin "+ clone)
 		
 		ask = input("Deseja subir a versão para o repositório remoto agora? ->")
 		if (ask == "s"):
+			print("Stageando alterações...")
 			os.system("git add .")
-			os.system('git commit -m "Bot Commit IGD3 <3"')
+			print("")
+			print("Efetuando commit local...")
+			os.system('git commit -m "Initial Commit With IGD3 <3"')
+			print("")
+			print("Fazendo upload para repositório remoto...")
 			os.system('git push origin master')
+			print("")
 		elif (ask == "n"):
 			print("Repositório remoto não atualizado!")
+			print("")
 		else:
 			print("Responda apenas 's' ou 'n'!")
+			print("")
 	def git_commit():
 		msg = input("o que foi alterado nessa versão? -> ")
-		key = False
-		while(key == False):
-			if (msg == ""):
-				sure = input("subir sem comentários? ->")
-				if (sure == "n"):
-					key = False
-				key = True
+		print("")
 		os.system("git add .")
+		print("")
+		print("Efetuando commit local...")
 		os.system('git commit -m "'+ msg +' (IGD3 Bot Commit)"')
+		print("")
 		print("Commitado!")
-
+		print("")
 	# Listeners Tree
 	while (True):
 		git_c = input(user + "-> ")
