@@ -40,6 +40,13 @@ def fast_push():
 	print("Fazendo upload para repositório remoto...")
 	os.system('git push origin master')
 
+def pull():
+	remote = input("remote-> ")
+	branch = input("branch-> ")
+	print("Fazendo download para repositório remoto...")
+	os.system("git pull " + remote + " " + branch)
+	print("")
+
 def linux_or_win():
 	quest = input("Está rodando esse software em um terminal Linux?")
 	if (quest == "s"):
@@ -85,7 +92,7 @@ def session_start():
 		os.system("git checkout -b " + branch_name )
 	def run_igd():
 		console = ["npm init -y",
-		"npm install --save-dev gulp",
+		"npm install --save-dev -g gulp",
 		"npm install --save-dev gulp-sass", 
 		"npm install --save-dev gulp-rename", 
 		"npm install --save-dev gulp-minify",
@@ -147,6 +154,11 @@ def session_start():
 		if (shell == "checkout"):
 			branch = input("branch->")
 			os.system("git checkout "+ branch)
+		if (shell == "merge"):
+			branch = input("branch->")
+			os.system("git merge " + branch)
+		if (shell == "pull"):
+			pull()
 
 
 print("---------IGD3 v.1.0.0----------")
