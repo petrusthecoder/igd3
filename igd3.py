@@ -45,7 +45,7 @@ def session_start():
 			os.system(console[loop])
 			loop += 1
 	def hello_git():
-		print("Iniciando um repositório git...")
+		print("Iniciando um novo repositório git...")
 		os.system("git init")
 		print("Configurando as informações do autor...")
 		os.system('git config user.name "'+ user +'"')
@@ -53,12 +53,13 @@ def session_start():
 		clone = input("Digite o link do git clone->")
 		os.system("git remote add origin "+ clone)
 		
-		ask = input("Deseja commitar? ->")
+		ask = input("Deseja subir a versão para o repositório remoto agora? ->")
 		if (ask == "s"):
 			os.system("git add .")
 			os.system('git commit -m "Bot Commit IGD3 <3"')
+			os.system('git push origin master')
 		elif (ask == "n"):
-			print("Repositório não será commitado!")
+			print("Repositório remoto não atualizado!")
 		else:
 			print("Responda apenas 's' ou 'n'!")
 
