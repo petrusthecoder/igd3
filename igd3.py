@@ -108,7 +108,10 @@ def session_start():
 			hello_git()
 		if (git_c == "commit"):
 			git_commit()
-
+		if (git_c == "log"):
+			os.system("git log")
+		if (git_c == "cls"):
+			os.system("cls")
 
 print("---------IGD3 v.1.0.0----------")
 print("Automatize Já!")
