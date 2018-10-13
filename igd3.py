@@ -161,10 +161,10 @@ def session_start():
 			pull()
 
 
-print("---------IGD3 v.1.0.0----------")
+print("---------IGD3 v.0.1.0 ((beta)----------")
 print("Automatize Já!")
 print("Desenvolvido por Petrus Rennan")
-print("-------------------------------")
+print("---------------------------------------")
 while (True):
 	ask = input("Já possui conta?")
 	if (ask == "s"):
